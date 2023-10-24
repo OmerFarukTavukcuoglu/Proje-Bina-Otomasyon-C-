@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Dashboard CurrencyCulture="tr-TR">
+  <Title Text="Dashboard" />
+  <DataSources>
+    <SqlDataSource ComponentName="dashboardSqlDataSource1">
+      <Name>SQL Data Source 1</Name>
+      <Connection Name="OMAR\OMAR_Demir_APT_Connection" ProviderKey="MSSqlServer">
+        <Parameters>
+          <Parameter Name="server" Value="OMAR\OMAR" />
+          <Parameter Name="database" Value="Demir_APT" />
+          <Parameter Name="useIntegratedSecurity" Value="True" />
+          <Parameter Name="read only" Value="1" />
+          <Parameter Name="generateConnectionHelper" Value="false" />
+          <Parameter Name="userid" Value="" />
+          <Parameter Name="password" Value="" />
+        </Parameters>
+      </Connection>
+      <Query Type="SelectQuery" Name="Daire1_Fatura">
+        <Tables>
+          <Table Name="Daire1_Fatura" Meta="30|30|125|220" />
+        </Tables>
+        <Columns>
+          <Column Table="Daire1_Fatura" Name="ID" />
+          <Column Table="Daire1_Fatura" Name="Elektrik" />
+          <Column Table="Daire1_Fatura" Name="Su" />
+          <Column Table="Daire1_Fatura" Name="Doğalgaz" />
+          <Column Table="Daire1_Fatura" Name="Telefon" />
+          <Column Table="Daire1_Fatura" Name="Internet" />
+          <Column Table="Daire1_Fatura" Name="Toplam" />
+          <Column Table="Daire1_Fatura" Name="Eklenme_Tarih" />
+          <Column Table="Daire1_Fatura" Name="Son_Tarih" />
+        </Columns>
+      </Query>
+      <ResultSchema>
+        <DataSet Name="SQL Data Source 1">
+          <View Name="Daire1_Fatura">
+            <Field Name="ID" Type="Int32" />
+            <Field Name="Elektrik" Type="Int32" />
+            <Field Name="Su" Type="Int32" />
+            <Field Name="Doğalgaz" Type="Int32" />
+            <Field Name="Telefon" Type="Int32" />
+            <Field Name="Internet" Type="Int32" />
+            <Field Name="Toplam" Type="Int32" />
+            <Field Name="Eklenme_Tarih" Type="DateTime" />
+            <Field Name="Son_Tarih" Type="DateTime" />
+          </View>
+        </DataSet>
+      </ResultSchema>
+      <ConnectionOptions CloseConnection="true" CommandTimeout="0" />
+    </SqlDataSource>
+  </DataSources>
+  <Items>
+    <Chart ComponentName="chartDashboardItem1" Name="Chart 1" DataSource="dashboardSqlDataSource1" DataMember="Daire1_Fatura">
+      <DataItems>
+        <Measure DataMember="ID" UniqueName="DataItem0" />
+        <Dimension DataMember="Toplam" UniqueName="DataItem6" />
+        <Measure DataMember="Toplam" UniqueName="DataItem7" />
+        <Dimension DataMember="Elektrik" UniqueName="DataItem1" />
+        <Dimension DataMember="Internet" UniqueName="DataItem2" />
+        <Dimension DataMember="Su" UniqueName="DataItem8" />
+        <Dimension DataMember="ID" UniqueName="DataItem5" />
+        <Dimension DataMember="Eklenme_Tarih" UniqueName="DataItem9" />
+        <Dimension DataMember="Son_Tarih" UniqueName="DataItem3" />
+      </DataItems>
+      <HiddenDimensions>
+        <Dimension UniqueName="DataItem6" />
+        <Dimension UniqueName="DataItem3" />
+      </HiddenDimensions>
+      <HiddenMeasures>
+        <Measure UniqueName="DataItem7" />
+      </HiddenMeasures>
+      <SeriesDimensions>
+        <SeriesDimension UniqueName="DataItem1" />
+        <SeriesDimension UniqueName="DataItem2" />
+        <SeriesDimension UniqueName="DataItem5" />
+        <SeriesDimension UniqueName="DataItem8" />
+      </SeriesDimensions>
+      <Arguments>
+        <Argument UniqueName="DataItem9" />
+      </Arguments>
+      <Panes>
+        <Pane Name="Pane 1">
+          <Series>
+            <Simple>
+              <Value UniqueName="DataItem0" />
+            </Simple>
+          </Series>
+        </Pane>
+      </Panes>
+    </Chart>
+    <Pie ComponentName="pieDashboardItem1" Name="Pies 1" DataSource="dashboardSqlDataSource1" DataMember="Daire1_Fatura">
+      <DataItems>
+        <Measure DataMember="Elektrik" UniqueName="DataItem0" />
+        <Measure DataMember="Su" UniqueName="DataItem1" />
+        <Measure DataMember="Doğalgaz" UniqueName="DataItem2" />
+        <Measure DataMember="Telefon" UniqueName="DataItem3" />
+        <Measure DataMember="Internet" UniqueName="DataItem4" />
+        <Dimension DataMember="ID" UniqueName="DataItem5" />
+      </DataItems>
+      <SeriesDimensions>
+        <SeriesDimension UniqueName="DataItem5" />
+      </SeriesDimensions>
+      <Values>
+        <Value UniqueName="DataItem0" />
+        <Value UniqueName="DataItem1" />
+        <Value UniqueName="DataItem2" />
+        <Value UniqueName="DataItem3" />
+        <Value UniqueName="DataItem4" />
+      </Values>
+    </Pie>
+  </Items>
+  <LayoutTree>
+    <LayoutGroup>
+      <LayoutItem DashboardItem="chartDashboardItem1" Weight="0.5" />
+      <LayoutItem DashboardItem="pieDashboardItem1" Weight="0.5" />
+    </LayoutGroup>
+  </LayoutTree>
+</Dashboard>

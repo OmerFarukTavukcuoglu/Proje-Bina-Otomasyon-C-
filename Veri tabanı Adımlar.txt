@@ -1,0 +1,18 @@
+*Programýn verilerle saðlýklý iletiþim kurmasý için SSMS'e Data klasöründeki databaseleri eklemeniz gerekir.
+*Ekleme Sýrasýnda "An error occurred when attaching the database" hatasý ile karþýlaþýrsanýz aþaðýdaki adýmlarý izleyin.
+
+1-Kolay bir çözüm olarak SSMS'i kapatýp yönetici olarak çalýþtýrmayý deneyin.
+
+2-MDF ve .LDF dosyalarýna açýk bir þekilde tam denetim vermektir. 
+Dosyalarý sað týklatýp Özellikler'i seçip Güvenlik sekmesini deðiþtirerek bunu yapabilirsiniz.
+
+3-Son bir çözüm, dosyalarý diðer veritabaný dosyalarýnýzýn varsayýlan dizinine kopyalamaktýr. Ne olduðunu öðrenmek için kullanabileceðiniz sp_helpfile SSMS prosedürü.
+ Benim makinemde: C: \ Program Files \ Microsoft SQL Server \ MSSQL10_50.SQLEXPRESS \ MSSQL \ DATA. Dosyalarý bu dizine kopyalayarak, otomatik olarak eklerin baþarýlý 
+olmasýna izin verecek izinler uygulanýr.
+
+
+(*) Veritabaný salt okunmasý
+
+Bu, arzulanan bir sonuç olarak çok fazla bir hata deðildir. Veritabanýný yüklediðinizde salt okunur durumda. Databasee simgesinin gri tonlamasýna göre (yanýndaki "Salt Okunur" etiketi deðil) söyleyebilirsiniz.
+
+En olasý nedeni, eklediðiniz .MDF dosyasýnýn salt okunur olmasýdýr. .MDF ve .LDF dosyalarýný sað týklatýn, özellikleri seçin ve sonra Salt okunur onay kutusunun iþaretini kaldýrýn.
